@@ -11,5 +11,11 @@ Testing environment
   * service deployment
 
     ```
-    $ kubectl apply -k service.yml
+    $ kubectl apply -f ./service.yml
+    ```
+
+  * service description
+
+    ```
+    $ kubectl describe service scouter-agent-java
     ```
