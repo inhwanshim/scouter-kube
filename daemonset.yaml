@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: scouter-agent-java
+  namespace: kube-system
+  labels:
+    app: scouter-agent-java
+spec:
+  selector:
+    matchLabels:
+      name: scouter-agent-java
+  template:
+    metadata:
+      labels:
+        name: scouter-agent-java
+    spec:
+      terminationGracePeriodSeconds: 30
+      nodeSelector:
+        kubernetes.io/os: linux
+      tolerations:
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      containers:
+      - name: scouter-agent-java
+        image: wlbebetter/agentjava2
+        volumeMounts: 
+        - name: scouter-agent-java-config
+          mountPath: /usr/local/tomcat/scouter/agent.java/conf
+      volumes:
+      - name: scouter-agent-java-config
+        configMap:
+          name: scouter-agent-java-config
+

@@ -1,0 +1,9 @@
+namespace: kube-system
+
+resources:
+- daemonset.yaml
+
+configMapGenerator:
+- name: scouter-agent-java-config
+  files:
+  - scouter.conf

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: scouter-agent-java
+spec:
+  selector:
+    app.kubernetes.io/name: AgentJava
+  ports:
+    - name: scttcp
+      protocol: TCP
+      port: 6100
+      targetPort: 6100
+    - name: sctudp
+      protocol: UDP
+      port: 6100
+      targetPort: 6100
