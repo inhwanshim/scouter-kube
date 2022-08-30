@@ -7,3 +7,9 @@ Testing environment
     ```
     $ kubectl apply -k .
     ```
+  
+  * service deployment
+
+    ```
+    $ kubectl apply -k service.yml
+    ```
